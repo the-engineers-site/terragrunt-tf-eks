@@ -8,6 +8,7 @@ dependency "vpc" {
     vpc_id          = "temporary-dummy-id"
     private_subnets = ["private-subnets"]
   }
+  mock_outputs_allowed_terraform_commands = ["init", "plan", "validate"]
 }
 
 terraform {
