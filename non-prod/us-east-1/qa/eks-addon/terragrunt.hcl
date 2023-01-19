@@ -3,7 +3,10 @@ include "root" {
 }
 
 dependency "eks" {
-  config_path = "../eks"
+  config_path  = "../eks"
+  mock_outputs = {
+    eks_cluster_id = "eks_cluster_id"
+  }
 }
 
 terraform {
@@ -22,6 +25,6 @@ include "common" {
 }
 
 inputs = merge(
-  {eks_cluster_id = dependency.eks.outputs.eks_cluster_id},
+  { eks_cluster_id = dependency.eks.outputs.eks_cluster_id },
   include.common.locals,
 )

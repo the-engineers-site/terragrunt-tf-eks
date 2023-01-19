@@ -3,7 +3,11 @@ include "root" {
 }
 
 dependency "vpc" {
-  config_path = "../vpc"
+  config_path  = "../vpc"
+  mock_outputs = {
+    vpc_id          = "temporary-dummy-id"
+    private_subnets = ["private-subnets"]
+  }
 }
 
 terraform {
