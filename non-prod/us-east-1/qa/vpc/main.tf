@@ -33,12 +33,12 @@ module "vpc" {
   default_security_group_tags   = { Name = "${var.environment_name}-default" }
 
   public_subnet_tags = {
-    "kubernetes.io/cluster/${var.eks.cluster_name_suffix}" = "shared"
+    "kubernetes.io/cluster/${var.environment_name}-${var.eks.cluster_name_suffix}" = "shared"
     "kubernetes.io/role/elb"                               = 1
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluster/${var.eks.cluster_name_suffix}" = "shared"
+    "kubernetes.io/cluster/${var.environment_name}-${var.eks.cluster_name_suffix}" = "shared"
     "kubernetes.io/role/internal-elb"                      = 1
   }
 
