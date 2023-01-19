@@ -29,7 +29,6 @@ include "common" {
 inputs = merge(
   { vpc_id = dependency.vpc.outputs.vpc_id },
   { private_subnet_ids = dependency.vpc.outputs.private_subnets },
-  include.common.locals,
   {
     managed_node_groups = {
       default = {
@@ -38,7 +37,9 @@ inputs = merge(
         min_size        = 1
         desired_size    = 2
         max_size        = 10
+        subnet_ids      = dependency.vpc.outputs.private_subnets
       }
     }
-  }
+  },
+  include.common.locals,
 )
