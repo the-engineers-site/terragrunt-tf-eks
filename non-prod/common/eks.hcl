@@ -12,15 +12,6 @@ inputs = {
   cluster_version           = "${local.environment_vars.eks.version.eks}"
   cluster_enabled_log_types = ["api"]
   cluster_service_ipv4_cidr = "${local.environment_vars.eks.eks_service_cidr}"
-  managed_node_groups       = {
-    processing = {
-      node_group_name = "${local.cluster_name}-ng"
-      instance_types  = ["t2.small"]
-      min_size        = 1
-      desired_size    = 2
-      max_size        = 10
-    }
-  }
   platform_teams = {
     admin = {
       users = [local.account_vars.locals.eks_admin_arn]
