@@ -9,7 +9,7 @@ locals {
   aws_region  = local.region_vars.locals.aws_region
 
   environment_vars = yamldecode(file(find_in_parent_folders("env.yaml")))
-  environment_name  = local.environment_vars.environment_name
+  environment_name = local.environment_vars.environment_name
 }
 
 # Generate an AWS provider block

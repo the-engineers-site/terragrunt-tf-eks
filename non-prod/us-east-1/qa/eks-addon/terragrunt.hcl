@@ -11,9 +11,8 @@ dependency "eks" {
 }
 
 terraform {
-  source = "${include.global_common.locals.base_source_url}//modules/kubernetes-addons?ref=v4.21.0"
+  source = "."
 }
-
 
 include "global_common" {
   path   = "${dirname(find_in_parent_folders())}/global-common/global-eks.hcl"
@@ -22,6 +21,11 @@ include "global_common" {
 
 include "common" {
   path   = "${dirname(get_parent_terragrunt_dir())}/../../common/eks-addons.hcl"
+  expose = true
+}
+
+include "eks_common" {
+  path   = "${dirname(get_parent_terragrunt_dir())}/../../common/eks.hcl"
   expose = true
 }
 
